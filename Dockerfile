@@ -2,7 +2,6 @@ FROM registry.access.redhat.com/ubi8/nodejs-16 AS build
 USER node
 WORKDIR /app
 COPY ./package.json .
- RUN sudo chmod -R 777 /home/node
 RUN npm install
 
 COPY . .
