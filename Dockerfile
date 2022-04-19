@@ -1,8 +1,9 @@
 FROM registry.access.redhat.com/ubi8/nodejs-16 AS build
+USER root
 RUN mkdir /app
 WORKDIR /app
 
-USER root
+
 COPY package.json /app
 RUN npm install
 COPY . /app
