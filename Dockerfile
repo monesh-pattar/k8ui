@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package.json /app
 RUN npm install
 COPY . /app
-
+RUN npm run build
 FROM registry.redhat.io/rhel8/nginx-116
 COPY --from=build /app/build /usr/share/nginx/html
 ENV PORT="8080"
