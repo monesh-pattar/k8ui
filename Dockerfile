@@ -10,6 +10,9 @@ COPY . /app
 RUN npm run build
 
 FROM registry.redhat.io/rhel8/nginx-116
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
 COPY --from=build /app/build /usr/share/nginx/html
 
 EXPOSE 8080
