@@ -11,6 +11,8 @@ RUN npm run build
 
 FROM registry.redhat.io/rhel8/nginx-116
 COPY --from=build /app/build /usr/share/nginx/html
+ENV PORT="8080"
+EXPOSE 8080 :80
 
 CMD ["nginx","-g", "daemon off;"]
 
