@@ -8,10 +8,10 @@ COPY package.json /app
 RUN npm install
 COPY . /app
 RUN npm run build
+
 FROM registry.redhat.io/rhel8/nginx-116
-#COPY nginx-os4.conf /etc/nginx/nginx.conf
 COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 8080:8080
+
 CMD ["nginx","-g", "daemon off;"]
 
 # EXPOSE 3000
